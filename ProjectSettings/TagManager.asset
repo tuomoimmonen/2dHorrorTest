@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Exit
+  - SoundTrigger
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Pickups
     uniqueID: 1975945507
+    locked: 0
+  - name: Enemies
+    uniqueID: 3468103155
     locked: 0
   - name: Player
     uniqueID: 2298066851

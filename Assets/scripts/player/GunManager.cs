@@ -16,6 +16,10 @@ public class GunManager : MonoBehaviour
     [SerializeField] TMP_Text ammoText;
     bool isDead;
 
+    [Header("Audio")]
+    [SerializeField] PlayRandomSound gunSounds;
+    [SerializeField] PlayRandomSound emptyGunSounds;
+
     private void Start()
     {
         UpdateAmmoDisplay();
@@ -38,7 +42,12 @@ public class GunManager : MonoBehaviour
 
     public void Shoot()
     {
-        if(pistolAmmo <= 0) { return; }
+        if(pistolAmmo <= 0) 
+        {
+            emptyGunSounds.PlaySound();
+            return; 
+        }
+        gunSounds.PlaySound();
         pistolAmmo--;
         UpdateAmmoDisplay();
         Instantiate(gunSmoke, gunBase.transform.position, Quaternion.identity);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BloodSprayer : MonoBehaviour
@@ -6,6 +7,10 @@ public class BloodSprayer : MonoBehaviour
     [SerializeField] float maxSprayRange = 5f;
     [SerializeField] int mixBloodAmount = 1;
     [SerializeField] int maxBloodAmount = 2;
+
+    [Header("Audio")]
+    [SerializeField] PlayRandomSound splatterSounds;
+    [SerializeField] float splatterSoundDelay = 0.3f;
 
     public void SprayBlood()
     {
@@ -19,5 +24,13 @@ public class BloodSprayer : MonoBehaviour
             Vector2 bloodPos = (Vector2)transform.position + sprayDirection * sprayRange;
             Instantiate(bloodSprite, bloodPos, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
         }
+
+        StartCoroutine(PlaySounds());
+    }
+
+    IEnumerator PlaySounds()
+    {
+        yield return new WaitForSeconds(splatterSoundDelay);
+        splatterSounds.PlaySound();
     }
 }

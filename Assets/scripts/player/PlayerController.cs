@@ -32,9 +32,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float timeToMaxTurn = 0.3f;
     [SerializeField] int maxHealth = 5;
     int health;
-    bool isDead = false;
+    public bool isDead = false;
     float curTurn = 0f;
     float curSpeed = 0f;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource engineSound;
+    [SerializeField] float maxEnginePitch = 1.5f;
+    [SerializeField] PlayRandomSound hurtSounds;
+    [SerializeField] PlayRandomSound deathSounds;
+    [SerializeField] PlayRandomSound healSounds;
+    [SerializeField] PlayRandomSound pickupSounds;
 
     private void Awake()
     {
@@ -109,6 +117,7 @@ public class PlayerController : MonoBehaviour
         rb.angularVelocity = curTurn * (curSpeed / maxSpeed);
 
         gunManager.UpdateAmmoDisplayPosition();
+        engineSound.pitch = Mathf.Lerp(1.0f, maxEnginePitch, Mathf.Abs(curSpeed / maxSpeed));
         /*
         // Get input
         float gasInput = Input.GetAxisRaw("Vertical");
@@ -152,13 +161,16 @@ public class PlayerController : MonoBehaviour
     {
         if(isDead)
         {
+            engineSound.Stop();
             return;
         }
         health -= damage;
         bloodSprayer.SprayBlood();
+        hurtSounds.PlaySound();
 
         if(health <= 0f)
         {
+            deathSounds.PlaySound();
             isDead = true;
             gunManager.SetDead();
             deathScreenAnim.SetTrigger("FadeIn");
@@ -189,12 +201,14 @@ public class PlayerController : MonoBehaviour
             Pickup pickup = collision.GetComponent<Pickup>();
             if(pickup.pickupTypes == Pickup.PickupTypes.health && health < maxHealth)
             {
+                healSounds.PlaySound();
                 Heal(pickup.amount);
                 Destroy(pickup.gameObject);
             }
 
             if(pickup.pickupTypes == Pickup.PickupTypes.pistolAmmo)
             {
+                pickupSounds.PlaySound();
                 gunManager.AddAmmo(pickup.amount);
                 Destroy(pickup.gameObject);
             }
@@ -203,6 +217,12 @@ public class PlayerController : MonoBehaviour
         if(collision.CompareTag("Exit"))
         {
             screenFader.LoadNextLevel();
+        }
+
+        if (collision.CompareTag("SoundTrigger"))
+        {
+            collision.GetComponent<AudioSource>().Play();
+            collision.GetComponent<Collider2D>().enabled = false;
         }
     }
 }

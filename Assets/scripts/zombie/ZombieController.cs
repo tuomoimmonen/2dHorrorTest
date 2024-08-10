@@ -28,6 +28,16 @@ public class ZombieController : MonoBehaviour
     bool isAttacking = false; // Flag to check if the zombie is attacking
     bool isShot = false; // Flag to check if the zombie is shot
 
+    [Header("Audio")]
+    [SerializeField] PlayRandomSound hurtSounds;
+    [SerializeField] PlayRandomSound deathSounds;
+    [SerializeField] PlayRandomSound attackSounds; //start attack
+    [SerializeField] PlayRandomSound dealDamageSounds; //connect attack
+    [SerializeField] PlayRandomSound alertSounds;
+    [SerializeField] PlayRandomSound stepSounds;
+
+
+
     Vector2 lastKnownPlayerPosition; // Last known position of the player
     bool hasLastKnownPosition = false; // Flag to check if the zombie has a last known position
 
@@ -67,6 +77,7 @@ public class ZombieController : MonoBehaviour
     {
         // Set the zombie to attack state
         curState = States.attack;
+        alertSounds.PlaySound();
     }
 
     void SetDeadState()
@@ -150,13 +161,15 @@ public class ZombieController : MonoBehaviour
 
     void StartAttack()
     {
+        if (player.GetComponent<PlayerController>().isDead) { return; }
         // Start the attack if not already attacking
         if (isAttacking)
         {
             return;
         }
         isAttacking = true;
-        //animation
+        attackSounds.PlaySound();
+        //animation todo here
         Invoke("FinishAttack", attackSpeed);
     }
 
@@ -166,7 +179,8 @@ public class ZombieController : MonoBehaviour
         if (CanAttackPlayer(attackRadius))
         {
             player.GetComponent<PlayerController>().Hurt(damage);
-            Debug.Log("zombie hit");
+            dealDamageSounds.PlaySound();
+
         }
         isAttacking = false;
     }
@@ -247,7 +261,12 @@ public class ZombieController : MonoBehaviour
         bloodSprayer.SprayBlood();
         if (health <= 0)
         {
+            deathSounds.PlaySound();
             SetDeadState();
+        }
+        else
+        {
+            hurtSounds.PlaySound();
         }
     }
 
@@ -273,5 +292,11 @@ public class ZombieController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position + transform.up * attackDistance, attackRadius);
         Gizmos.DrawWireSphere(transform.position + transform.up * attackDistance, minSightRange);
         Gizmos.DrawWireSphere(transform.position + transform.up * attackDistance, maxSightRange);
+    }
+
+    //animation event todo here
+    public void PlayStepSounds()
+    {
+        stepSounds.PlaySound();
     }
 }

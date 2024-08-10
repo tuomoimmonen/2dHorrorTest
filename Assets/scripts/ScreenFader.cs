@@ -7,6 +7,13 @@ public class ScreenFader : MonoBehaviour
     [SerializeField] float waitTime = 1.0f;
     Animator animator;
 
+    private void Start()
+    {
+        if(MusicManager.instance != null)
+        {
+            MusicManager.instance.UpdateCurrentTrack();
+        }
+    }
     private void Awake()
     {
         animator = GetComponent<Animator>();

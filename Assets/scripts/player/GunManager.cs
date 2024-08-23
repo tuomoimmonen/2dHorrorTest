@@ -26,6 +26,7 @@ public class GunManager : MonoBehaviour
     }
     void Update()
     {
+        if (isDead) {  return; }
         FaceMouse();
     }
 
@@ -36,6 +37,7 @@ public class GunManager : MonoBehaviour
         transform.up = mouseDirection;
 
         float yPos = mouseDirection.magnitude;
+
         if(yPos > maxDistance) { yPos = maxDistance; }
         gunBase.localPosition = new Vector2(0f, yPos);
     }

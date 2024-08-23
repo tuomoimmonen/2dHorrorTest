@@ -11,6 +11,8 @@ public class ZombieController : MonoBehaviour
     [SerializeField] LayerMask blockVisionMask; // Layer mask to block vision
     [SerializeField] BloodSprayer bloodSprayer; // Reference to the BloodSprayer component
     [SerializeField] DropShadow dropShadow; // Reference to the DropShadow component
+    Animator animator; //zombie animator
+    SpriteRenderer spriteRenderer; //for random flipx
 
     [Header("Data")]
     [SerializeField] float turnSpeed = 360f; // Speed at which the zombie turns
@@ -27,6 +29,7 @@ public class ZombieController : MonoBehaviour
     [SerializeField] int health = 3; // Health of the zombie
     bool isAttacking = false; // Flag to check if the zombie is attacking
     bool isShot = false; // Flag to check if the zombie is shot
+    bool playerIsDead = false; //to stop zombie movement when player is dead
 
     [Header("Audio")]
     [SerializeField] PlayRandomSound hurtSounds;
@@ -47,9 +50,28 @@ public class ZombieController : MonoBehaviour
     private void Awake()
     {
         // Get components and references
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         circleCollider = GetComponent<CircleCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        spriteRenderer.flipX = Random.Range(0, 2) == 0; //random flip on start
+        PlayerController.OnPlayerDead += OnPlayerDeadCallback;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerController.OnPlayerDead -= OnPlayerDeadCallback;
+    }
+
+    private void OnPlayerDeadCallback()
+    {
+        playerIsDead = true;
+        animator.SetBool("Moving", false);
     }
 
     void Update()
@@ -87,11 +109,14 @@ public class ZombieController : MonoBehaviour
         rb.velocity = Vector2.zero;
         circleCollider.enabled = false;
         dropShadow.CalculateOffsetDirection(dropShadowOffsetOnDeath);
-        Destroy(gameObject);
+        animator.SetTrigger("Die");
+        //Destroy(gameObject);
     }
 
     void UpdateIdleState()
     {
+        if(playerIsDead) { return; }
+
         // In idle state, check if the zombie can see the player
         if (CanSeePlayer())
         {
@@ -103,15 +128,19 @@ public class ZombieController : MonoBehaviour
 
     void UpdateAttackState()
     {
+        bool isMoving = false;
+        if(playerIsDead) { return; }    
         // In attack state, update the last known player position if the zombie can see the player
         if (CanSeePlayer())
         {
             lastKnownPlayerPosition = player.transform.position;
             hasLastKnownPosition = true;
+            isMoving = true;
         }
         else if (hasLastKnownPosition)
         {
             // If the zombie has a last known position, move towards it
+            isMoving = true;
             MoveTowardsLastKnownPosition();
             return;
         }
@@ -120,6 +149,7 @@ public class ZombieController : MonoBehaviour
         if (!CanSeePlayer() && !isShot)
         {
             SetIdleState();
+            isMoving = false;
             return;
         }
 
@@ -134,11 +164,13 @@ public class ZombieController : MonoBehaviour
         }
         else
         {
+            isMoving = true;
             Vector2 directionToPlayer = player.transform.position - transform.position;
             directionToPlayer.Normalize();
             FaceDirection(directionToPlayer);
             rb.velocity = directionToPlayer * moveSpeed;
         }
+        animator.SetBool("Moving", isMoving);
     }
 
     void MoveTowardsLastKnownPosition()
@@ -169,11 +201,18 @@ public class ZombieController : MonoBehaviour
         }
         isAttacking = true;
         attackSounds.PlaySound();
+        animator.SetTrigger("Attack");
         //animation todo here
-        Invoke("FinishAttack", attackSpeed);
+        //Invoke("FinishAttack", attackSpeed);
     }
 
     void FinishAttack()
+    {
+
+        isAttacking = false;
+    }
+
+    void DealDamage()
     {
         // Finish the attack and check if the player can be attacked
         if (CanAttackPlayer(attackRadius))
@@ -182,7 +221,6 @@ public class ZombieController : MonoBehaviour
             dealDamageSounds.PlaySound();
 
         }
-        isAttacking = false;
     }
 
     bool CanAttackPlayer(float radius)

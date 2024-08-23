@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -12,12 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform handL;
     [SerializeField] Transform streerinWheelL;
     [SerializeField] Transform streerinWheelR;
+    [SerializeField] Transform cleanerMop;
     [SerializeField] Transform gunBase;
     [SerializeField] GunManager gunManager;
     [SerializeField] BloodSprayer bloodSprayer;
     [SerializeField] TMP_Text healthText;
     [SerializeField] Animator deathScreenAnim;
     [SerializeField] ScreenFader screenFader;
+    [SerializeField] InventoryManager inventoryManager;
 
     public float acceleration = 2f;
     public float brakeForce = 0.5f;
@@ -44,6 +47,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayRandomSound healSounds;
     [SerializeField] PlayRandomSound pickupSounds;
 
+    [Header("Events")]
+    public static Action OnPlayerDead;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,14 +64,15 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(isDead) { return; }
-
-        cam.transform.rotation = Quaternion.Euler(0f,0f,0f);
         handL.rotation = gunBase.rotation;
         handL.position = gunBase.position;
-
         float t = 0.5f + (curTurn / maxTurn) / 2f;
         handR.position = Vector2.Lerp(streerinWheelR.position, streerinWheelL.position, t);
+
+        if (isDead) { return; }
+
+        cleanerMop.localRotation *= Quaternion.Euler(0f, 0f, 20f * Time.deltaTime);
+        cam.transform.rotation = Quaternion.Euler(0f,0f,0f);
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -172,6 +179,7 @@ public class PlayerController : MonoBehaviour
         {
             deathSounds.PlaySound();
             isDead = true;
+            OnPlayerDead?.Invoke();
             gunManager.SetDead();
             deathScreenAnim.SetTrigger("FadeIn");
             //Debug.Log("Dead");
@@ -210,6 +218,13 @@ public class PlayerController : MonoBehaviour
             {
                 pickupSounds.PlaySound();
                 gunManager.AddAmmo(pickup.amount);
+                Destroy(pickup.gameObject);
+            }
+            
+            if(pickup.pickupTypes == Pickup.PickupTypes.key)
+            {
+                pickupSounds.PlaySound();
+                inventoryManager.ActivateKeyObjectInInventory();
                 Destroy(pickup.gameObject);
             }
         }

@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class SlidingDoor : MonoBehaviour
@@ -17,7 +16,7 @@ public class SlidingDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Enemy"))
         {
             if(!isLocked)
             {
@@ -42,7 +41,7 @@ public class SlidingDoor : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Enemy"))
         {
             if(isLocked && !key.activeInHierarchy)
             {

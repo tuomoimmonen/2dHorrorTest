@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,10 @@ public class ScreenFader : MonoBehaviour
 {
     [SerializeField] float waitTime = 1.0f;
     Animator animator;
+
+    [Header("Events")]
+    public static Action OnLevelFinished;
+
 
     private void Start()
     {
@@ -42,6 +47,8 @@ public class ScreenFader : MonoBehaviour
 
     IEnumerator LoadSceneAfterFadeToBlack(string sceneName)
     {
+        OnLevelFinished?.Invoke();
+        Time.timeScale = 1f;
         FadeToBlack();
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(sceneName);
@@ -49,6 +56,8 @@ public class ScreenFader : MonoBehaviour
 
     IEnumerator LoadSceneAfterFadeToBlack(int sceneIndex)
     {
+        OnLevelFinished?.Invoke();
+        Time.timeScale = 1f;
         FadeToBlack();
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(sceneIndex);
@@ -56,9 +65,9 @@ public class ScreenFader : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerPrefs.DeleteAll();
         Application.Quit();
     }
-
 
 
 }

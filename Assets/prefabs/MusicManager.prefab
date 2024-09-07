@@ -46,7 +46,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safeMusic: {fileID: 8300000, guid: a865b99a277910446991031387098daf, type: 3}
-  combatMusic: {fileID: 8300000, guid: 943e90f87ea16934995baf5105af17f5, type: 3}
+  combatMusic: {fileID: 8300000, guid: 7a931332d1edb164e8b5833457959fa6, type: 3}
   safeRoomScenes:
   - MainMenu
   - Intro

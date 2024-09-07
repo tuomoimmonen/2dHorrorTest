@@ -61,20 +61,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
       propertyPath: sounds.Array.size
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
       propertyPath: 'sounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 12ef17884eb5d0c4f889cc4a73c32e6c, type: 3}
+      objectReference: {fileID: 8300000, guid: 6cc9602462b00c6418af1642f0f04083, type: 3}
     - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
       propertyPath: 'sounds.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: f6f7ed7eec3588241aafaa8bb6bb7c8b, type: 3}
+      objectReference: {fileID: 8300000, guid: ff0f65d2cabdbb34c9363194993ae845, type: 3}
     - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
       propertyPath: 'sounds.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 57f877e179ea0ea498b900f02222205d, type: 3}
+      objectReference: {fileID: 8300000, guid: 68507d4947b022646b4c2a54eaac75be, type: 3}
+    - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
+      propertyPath: 'sounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0429c15d8cc97f047931bd614b0f89c4, type: 3}
+    - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
+      propertyPath: 'sounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ee9e099cfa786054b8858a5ae519118d, type: 3}
+    - target: {fileID: 4410534657706503912, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
+      propertyPath: 'sounds.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e8252f64c476e04b8e7c6a3575a8638, type: 3}
     - target: {fileID: 6518229510191698293, guid: b646af13a7b360247baaec91b962f4fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -55,11 +55,11 @@ public class ZombieController : MonoBehaviour
         circleCollider = GetComponent<CircleCollider2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = Random.Range(0, 2) == 0; //random flip on start
     }
 
     private void Start()
     {
-        spriteRenderer.flipX = Random.Range(0, 2) == 0; //random flip on start
         PlayerController.OnPlayerDead += OnPlayerDeadCallback;
     }
 
@@ -136,11 +136,13 @@ public class ZombieController : MonoBehaviour
             lastKnownPlayerPosition = player.transform.position;
             hasLastKnownPosition = true;
             isMoving = true;
+            animator.SetBool("Moving", isMoving);
         }
         else if (hasLastKnownPosition)
         {
             // If the zombie has a last known position, move towards it
             isMoving = true;
+            animator.SetBool("Moving", isMoving);
             MoveTowardsLastKnownPosition();
             return;
         }
@@ -150,6 +152,7 @@ public class ZombieController : MonoBehaviour
         {
             SetIdleState();
             isMoving = false;
+            animator.SetBool("Moving", isMoving);
             return;
         }
 
@@ -169,8 +172,9 @@ public class ZombieController : MonoBehaviour
             directionToPlayer.Normalize();
             FaceDirection(directionToPlayer);
             rb.velocity = directionToPlayer * moveSpeed;
+            animator.SetBool("Moving", isMoving);
         }
-        animator.SetBool("Moving", isMoving);
+        //animator.SetBool("Moving", isMoving);
     }
 
     void MoveTowardsLastKnownPosition()
@@ -179,7 +183,7 @@ public class ZombieController : MonoBehaviour
         Vector2 directionToLastKnownPosition = lastKnownPlayerPosition - (Vector2)transform.position;
         float distanceToLastKnownPosition = directionToLastKnownPosition.magnitude;
 
-        if (distanceToLastKnownPosition < 0.1f) // When the zombie is close enough to the last known position
+        if (distanceToLastKnownPosition < 1f) // When the zombie is close enough to the last known position
         {
             hasLastKnownPosition = false;
             SetIdleState();
@@ -262,12 +266,13 @@ public class ZombieController : MonoBehaviour
         Vector2 directionToPlayer = player.transform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
         directionToPlayer.Normalize();
-        if (distanceToPlayer < minSightRange)
+        if (distanceToPlayer <= minSightRange)
         {
             return true;
         }
         if (distanceToPlayer > maxSightRange)
         {
+            animator.SetBool("Moving", false);
             return false;
         }
 
@@ -304,6 +309,7 @@ public class ZombieController : MonoBehaviour
         }
         else
         {
+            //animator.SetTrigger("Hit");
             hurtSounds.PlaySound();
         }
     }

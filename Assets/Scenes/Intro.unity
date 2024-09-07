@@ -209,7 +209,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 963196531}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11470120
@@ -551,6 +552,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e6efd206cdffd41b35958218849e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &963196530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 11470119}
+    m_Modifications:
+    - target: {fileID: 1105521629989846973, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_Name
+      value: dust particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+--- !u!4 &963196531 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3046974670723850168, guid: 76f192f8b54a22e479940f5a931c65ac, type: 3}
+  m_PrefabInstance: {fileID: 963196530}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1108472789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,15 +628,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3527840142391129956, guid: 28528cf9582f3b84d88b37cf1cb49da9, type: 3}
       propertyPath: m_text
-      value: start of the story here
+      value: "\"They told me Blackwood Hospital was abandoned\u2014a relic of a failed
+        experiment buried deep in the mountains. But last night, I got a call. Static
+        crackling through the line, a voice barely a whisper, 'Help me... they're
+        still here.'\n\nI\u2019ve seen my share of filth as a cleaner, but nothing
+        like this. Blood-soaked floors, shadows that move when you\u2019re not looking,
+        and the smell... that sickly, rotten stench. Something's festering inside
+        Blackwood, something that shouldn't be. So I grabbed my gun\u2014not for
+        the dirt, but for whatever\u2019s left in there. Because whatever called
+        me from that place, it\u2019s not alone.\""
       objectReference: {fileID: 0}
     - target: {fileID: 3527840142391129956, guid: 28528cf9582f3b84d88b37cf1cb49da9, type: 3}
       propertyPath: m_fontSize
-      value: 30
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3527840142391129956, guid: 28528cf9582f3b84d88b37cf1cb49da9, type: 3}
       propertyPath: m_fontSizeBase
-      value: 30
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3527840142391129956, guid: 28528cf9582f3b84d88b37cf1cb49da9, type: 3}
       propertyPath: m_VerticalAlignment

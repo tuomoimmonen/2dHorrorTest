@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
-        if (musicSource == null)
+        if (instance == null)
         {
             musicSource = GetComponent<AudioSource>();
             musicSource.clip = safeMusic;
@@ -23,7 +23,7 @@ public class MusicManager : MonoBehaviour
         {
             if(this != instance)
             {
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }

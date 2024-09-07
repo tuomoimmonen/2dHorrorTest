@@ -8,6 +8,9 @@ TagManager:
   - Exit
   - SoundTrigger
   - Key
+  - Paper
+  - AmbienceTrigger
+  - Collectable
   layers:
   - Default
   - TransparentFX
@@ -19,9 +22,9 @@ TagManager:
   - Enemies
   - OnFloor
   - Pickups
-  - 
-  - 
-  - 
+  - GunShell
+  - Furniture
+  - Door
   - 
   - 
   - 
@@ -57,23 +60,23 @@ TagManager:
   - name: Pickups
     uniqueID: 1975945507
     locked: 0
-  - name: Enemies
-    uniqueID: 3468103155
-    locked: 0
   - name: Guard
     uniqueID: 3449428995
-    locked: 0
-  - name: Player
-    uniqueID: 2298066851
-    locked: 0
-  - name: Walls
-    uniqueID: 2268116013
     locked: 0
   - name: Furnitures
     uniqueID: 439105407
     locked: 0
   - name: HumanVictims
     uniqueID: 3715910351
+    locked: 0
+  - name: Enemies
+    uniqueID: 3468103155
+    locked: 0
+  - name: Player
+    uniqueID: 2298066851
+    locked: 0
+  - name: Walls
+    uniqueID: 2268116013
     locked: 0
   m_RenderingLayers:
   - Default

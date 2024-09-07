@@ -1,0 +1,505 @@
+fileFormatVersion: 2
+guid: 837725200b40d264f89276f8262dffcc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1802281054125207235
+    second: villainTopDownToBackAnim_0
+  - first:
+      213: -1280615260869095124
+    second: villainTopDownToBackAnim_1
+  - first:
+      213: -8280596233523702216
+    second: villainTopDownToBackAnim_2
+  - first:
+      213: -6594546949905689336
+    second: villainTopDownToBackAnim_3
+  - first:
+      213: 8053958858127428125
+    second: villainTopDownToBackAnim_4
+  - first:
+      213: 7778445414292511805
+    second: villainTopDownToBackAnim_5
+  - first:
+      213: -4539605532680072629
+    second: villainTopDownToBackAnim_6
+  - first:
+      213: -7113959813899164832
+    second: villainTopDownToBackAnim_7
+  - first:
+      213: -354460262746530716
+    second: villainTopDownToBackAnim_8
+  - first:
+      213: -6011042969954744337
+    second: villainTopDownToBackAnim_9
+  - first:
+      213: -4103704577270159655
+    second: villainTopDownToBackAnim_10
+  - first:
+      213: 305202500441677204
+    second: villainTopDownToBackAnim_11
+  - first:
+      213: 1678937984274847339
+    second: villainTopDownToBackAnim_12
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 1
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 1
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_0
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 201
+        width: 173
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31537f1ee20df6e0800000000000000
+      internalID: -1802281054125207235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_1
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 256
+        width: 175
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2114f984375a3ee0800000000000000
+      internalID: -1280615260869095124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_2
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 197
+        width: 163
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 836d16c1999651d80800000000000000
+      internalID: -8280596233523702216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_3
+      rect:
+        serializedVersion: 2
+        x: 1642
+        y: 229
+        width: 181
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8055c3c0d767b74a0800000000000000
+      internalID: -6594546949905689336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_4
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 166
+        width: 177
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1acb46e8e865cf60800000000000000
+      internalID: 8053958858127428125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_5
+      rect:
+        serializedVersion: 2
+        x: 2633
+        y: 153
+        width: 173
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3cdbaf64e692fb60800000000000000
+      internalID: 7778445414292511805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_6
+      rect:
+        serializedVersion: 2
+        x: 3122
+        y: 164
+        width: 182
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b42d434e1d41001c0800000000000000
+      internalID: -4539605532680072629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_7
+      rect:
+        serializedVersion: 2
+        x: 3622
+        y: 108
+        width: 178
+        height: 385
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063e22a9d33264d90800000000000000
+      internalID: -7113959813899164832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_8
+      rect:
+        serializedVersion: 2
+        x: 4116
+        y: 154
+        width: 180
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46c5000e444b41bf0800000000000000
+      internalID: -354460262746530716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_9
+      rect:
+        serializedVersion: 2
+        x: 4602
+        y: 131
+        width: 193
+        height: 383
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe70d36444c749ca0800000000000000
+      internalID: -6011042969954744337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_10
+      rect:
+        serializedVersion: 2
+        x: 5101
+        y: 119
+        width: 181
+        height: 391
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d6eaa8ed66bc07c0800000000000000
+      internalID: -4103704577270159655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_11
+      rect:
+        serializedVersion: 2
+        x: 5588
+        y: 135
+        width: 190
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d136f9e0c4c3400800000000000000
+      internalID: 305202500441677204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: villainTopDownToBackAnim_12
+      rect:
+        serializedVersion: 2
+        x: 6093
+        y: 125
+        width: 174
+        height: 388
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66dc988339cc4710800000000000000
+      internalID: 1678937984274847339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      villainTopDownToBackAnim_0: -1802281054125207235
+      villainTopDownToBackAnim_1: -1280615260869095124
+      villainTopDownToBackAnim_10: -4103704577270159655
+      villainTopDownToBackAnim_11: 305202500441677204
+      villainTopDownToBackAnim_12: 1678937984274847339
+      villainTopDownToBackAnim_2: -8280596233523702216
+      villainTopDownToBackAnim_3: -6594546949905689336
+      villainTopDownToBackAnim_4: 8053958858127428125
+      villainTopDownToBackAnim_5: 7778445414292511805
+      villainTopDownToBackAnim_6: -4539605532680072629
+      villainTopDownToBackAnim_7: -7113959813899164832
+      villainTopDownToBackAnim_8: -354460262746530716
+      villainTopDownToBackAnim_9: -6011042969954744337
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

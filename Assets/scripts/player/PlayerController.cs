@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public bool isDead = false;
     float curTurn = 0f;
     float curSpeed = 0f;
+    private bool canMove;
 
     [Header("Audio")]
     [SerializeField] AudioSource engineSound;
@@ -46,24 +49,56 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayRandomSound deathSounds;
     [SerializeField] PlayRandomSound healSounds;
     [SerializeField] PlayRandomSound pickupSounds;
+    [SerializeField] PlayRandomSound pickupKeysSounds;
 
     [Header("Events")]
     public static Action OnPlayerDead;
+    public static Action OnPlayerFinishedInterract;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         health = maxHealth;
+        canMove = true;
     }
 
     private void Start()
     {
+        LoadData();
         UpdateHealthDisplay();
+        GuardController.OnPlayerInterracting += OnPlayerTalkingCallback;
+        ScreenFader.OnLevelFinished += OnLevelFinishedCallback;
+        PauseMenuController.OnGamePaused += OnPlayerTalkingCallback;
+        PauseMenuController.OnGameUnPaused += OnGameUnPausedCallback;
     }
 
+    private void OnDestroy()
+    {
+        GuardController.OnPlayerInterracting -= OnPlayerTalkingCallback;
+        ScreenFader.OnLevelFinished -= OnLevelFinishedCallback;
+        PauseMenuController.OnGamePaused -= OnPlayerTalkingCallback;
+        PauseMenuController.OnGameUnPaused -= OnGameUnPausedCallback;
+    }
+
+    private void OnLevelFinishedCallback()
+    {
+        SaveData();
+    }
+
+    private void OnGameUnPausedCallback()
+    {
+        canMove = true;
+    }
+
+    private void OnPlayerTalkingCallback()
+    {
+        canMove = false;
+    }
 
     void Update()
     {
+        if (!canMove) { return; }
+
         handL.rotation = gunBase.rotation;
         handL.position = gunBase.position;
         float t = 0.5f + (curTurn / maxTurn) / 2f;
@@ -82,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(isDead) 
+        if(isDead || !canMove) 
         {
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0f;
@@ -92,6 +127,7 @@ public class PlayerController : MonoBehaviour
         float gasInput = Input.GetAxisRaw("Vertical");
         curSpeed += gasInput * (maxSpeed / timeToMaxSpeed);
         curSpeed = Mathf.Clamp(curSpeed, -maxSpeed, maxSpeed);
+        //curSpeed = Mathf.Lerp(curSpeed, maxSpeed, timeToMaxSpeed);
 
         //brakes
         if (Input.GetButton("Jump"))
@@ -109,7 +145,7 @@ public class PlayerController : MonoBehaviour
         {
             steeringInput = -Mathf.Sign(curTurn);
         }
-        curTurn += steeringInput * (maxSpeed / timeToMaxSpeed);
+        curTurn += steeringInput * (maxSpeed / timeToMaxTurn);
         curTurn = Mathf.Clamp(curTurn, -maxTurn, maxTurn);
 
         if(returnSteerToZero && Mathf.Sign(curTurn) == Mathf.Sign(steeringInput))
@@ -177,6 +213,7 @@ public class PlayerController : MonoBehaviour
 
         if(health <= 0f)
         {
+            PlayerPrefs.SetInt("health", maxHealth);
             deathSounds.PlaySound();
             isDead = true;
             OnPlayerDead?.Invoke();
@@ -202,6 +239,13 @@ public class PlayerController : MonoBehaviour
         healthText.text = "health: " + health.ToString() + "/" + maxHealth.ToString();
     }
 
+    public void SetPlayTimeScale()
+    {
+        OnPlayerFinishedInterract?.Invoke();
+        Time.timeScale = 1;
+        canMove = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.GetComponent<Pickup>() != null)
@@ -223,7 +267,7 @@ public class PlayerController : MonoBehaviour
             
             if(pickup.pickupTypes == Pickup.PickupTypes.key)
             {
-                pickupSounds.PlaySound();
+                pickupKeysSounds.PlaySound();
                 inventoryManager.ActivateKeyObjectInInventory();
                 Destroy(pickup.gameObject);
             }
@@ -239,5 +283,31 @@ public class PlayerController : MonoBehaviour
             collision.GetComponent<AudioSource>().Play();
             collision.GetComponent<Collider2D>().enabled = false;
         }
+
+        if (collision.CompareTag("AmbienceTrigger"))
+        {
+            collision.GetComponent<PlayRandomSound>().PlaySound();
+            collision.GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
+    private void LoadData()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 2) { return; } //reset pistol ammo at tutorial and level1
+
+        health = PlayerPrefs.GetInt("health", 5);
+        //StartCoroutine(LoadDataAfterFrame());
+    }
+
+    private IEnumerator LoadDataAfterFrame()
+    {
+        yield return new WaitForEndOfFrame();
+        health = PlayerPrefs.GetInt("health", 5);
+    }
+
+    private void SaveData()
+    {
+        if (isDead) { return; }
+        PlayerPrefs.SetInt("health", health);
     }
 }

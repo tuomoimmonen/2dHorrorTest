@@ -33,7 +33,7 @@ public class GuardController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            activateToInterractText.text = "Press [E] to interract";
+            activateToInterractText.text = "Press [E] to interact";
             playerNear = true;
         }
     }
